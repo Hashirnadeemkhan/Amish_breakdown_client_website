@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Phone, Search, Facebook, Twitter, Instagram, MapPin, Mail, Clock } from "lucide-react"
+import { Menu, X, Phone, Search,  } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -20,51 +20,13 @@ export function Header() {
 
   return (
     <header className="fixed top-0 w-full z-50">
-      <div
-        className={`bg-yellow-500 text-black py-2 text-sm transition-all duration-500 ease-in-out ${
-          isScrolled ? "transform -translate-y-full opacity-0" : "transform translate-y-0 opacity-100"
-        }`}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
-            {/* Social Icons */}
-            <div className="flex items-center space-x-3">
-              <Facebook className="w-4 h-4 hover:text-white cursor-pointer transition-all duration-300 hover:scale-110" />
-              <Twitter className="w-4 h-4 hover:text-white cursor-pointer transition-all duration-300 hover:scale-110" />
-              <div className="w-4 h-4 hover:text-white cursor-pointer transition-all duration-300 hover:scale-110">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.373 0 0 5.372 0 12s5.373 12 12 12 12-5.372 12-12S18.627 0 12 0zm5.568 8.16c-.169 1.858-.896 3.463-2.001 4.568-1.105 1.105-2.71 1.832-4.568 2.001v-3.484h-1.5v-1.5h1.5V7.5h1.5v2.245h2.245v1.5H13.5v3.484c1.245-.113 2.369-.653 3.182-1.466.813-.813 1.353-1.937 1.466-3.182H15.75v-1.5h2.318c-.169-1.858-.896-3.463-2.001-4.568C14.962 2.408 13.357 1.681 11.5 1.512v3.484h1.5v1.5h-1.5V8.74H8.755v-1.5H11.5V3.756c-1.245.113-2.369.653-3.182 1.466-.813.813-1.353 1.937-1.466 3.182H9.25v1.5H6.932c.169 1.858.896 3.463 2.001 4.568 1.105 1.105 2.71 1.832 4.568 2.001v-3.484h-1.5v-1.5h1.5v-2.245h2.245v1.5H13.5V7.244c1.245-.113 2.369-.653 3.182-1.466.813-.813 1.353-1.937 1.466-3.182h-2.398v-1.5h2.818z" />
-                </svg>
-              </div>
-              <Instagram className="w-4 h-4 hover:text-white cursor-pointer transition-all duration-300 hover:scale-110" />
-            </div>
-
-            {/* Operating Hours */}
-            <div className="hidden md:flex items-center space-x-2 font-medium">
-              <Clock className="w-4 h-4" />
-              <span>Mon to Sat: 8.00 am - 8.00 pm</span>
-            </div>
-
-            {/* Contact Info */}
-            <div className="hidden lg:flex items-center space-x-6 font-medium">
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>Head Office: 51 Biscoe Close Heston TW5 0UP Heston</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>info@amishbreakdown.com</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    
 
       <div
-        className={`transition-all duration-500 ease-in-out ${
+        className={`transition-all duration-500 ease-in-out fixed w-full ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-2xl py-2 border-b border-yellow-200"
-            : "bg-gray-900 py-4 border-b border-gray-800"
+            ? "bg-white/95 top-0 backdrop-blur-md shadow-2xl border-b border-yellow-200"
+            : "bg-gray-900  border-b border-gray-800"
         }`}
         style={{
           transform: isScrolled ? "translateY(0)" : "translateY(0)",
@@ -77,7 +39,7 @@ export function Header() {
                 isScrolled ? "scale-90" : "scale-100"
               }`}
             >
-             <Image src="/logo.png"  alt="Logo" width={120} height={120} />
+             <Image src="/logo.png"  alt="Logo" width={110} height={110} />
              
             </div>
 
