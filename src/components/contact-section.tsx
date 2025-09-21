@@ -1,12 +1,17 @@
-"use client"
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { useForm } from 'react-hook-form';
-import Image from 'next/image';
-
+"use client";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { useForm, ControllerRenderProps } from "react-hook-form";
+import Image from "next/image";
 
 interface ContactFormData {
   name: string;
@@ -18,14 +23,14 @@ interface ContactFormData {
 
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const form = useForm<ContactFormData>({
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
     },
   });
 
@@ -33,7 +38,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
     // Simulate form submission
     setTimeout(() => {
-      console.log('Form submitted:', data);
+      console.log("Form submitted:", data);
       setIsSubmitting(false);
       form.reset();
     }, 2000);
@@ -54,13 +59,13 @@ const ContactSection = () => {
           <div className="relative animate-slide-in-right">
             <div className="relative overflow-hidden rounded-3xl shadow-elegant">
               <Image
-              height={600} 
-              width={600}
+                height={600}
+                width={600}
                 src="/contact"
                 alt="Professional business consultation"
                 className="w-full h-[600px] object-cover"
               />
-              
+
               {/* Geometric Overlay Elements */}
               <div className="absolute inset-0">
                 {/* Yellow Arrow Shape */}
@@ -70,11 +75,11 @@ const ContactSection = () => {
                     <div className="absolute top-0 right-0 w-0 h-0 border-t-16 border-b-16 border-l-16 border-t-transparent border-b-transparent border-l-primary animate-bounce-in delay-700"></div>
                   </div>
                 </div>
-                
+
                 {/* Black Geometric Shapes */}
                 <div className="absolute bottom-20 left-8 w-24 h-40 bg-accent transform -skew-x-12 animate-fade-in delay-500"></div>
                 <div className="absolute top-32 right-12 w-20 h-20 bg-accent transform rotate-45 animate-scale-in delay-900"></div>
-                
+
                 {/* Border Frame */}
                 <div className="absolute top-8 right-8 w-32 h-24 border-4 border-primary animate-fade-in delay-1100"></div>
               </div>
@@ -97,13 +102,16 @@ const ContactSection = () => {
 
             {/* Contact Form */}
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 animate-scale-in delay-700">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6 animate-scale-in delay-700"
+              >
                 {/* Name and Email Row */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
                     name="name"
-                    rules={{ required: 'Name is required' }}
+                    rules={{ required: "Name is required" }}
                     render={({ field }) => (
                       <FormItem className="group">
                         <FormControl>
@@ -117,16 +125,16 @@ const ContactSection = () => {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="email"
-                    rules={{ 
-                      required: 'Email is required',
+                    rules={{
+                      required: "Email is required",
                       pattern: {
                         value: /^\S+@\S+$/i,
-                        message: 'Invalid email address'
-                      }
+                        message: "Invalid email address",
+                      },
                     }}
                     render={({ field }) => (
                       <FormItem className="group">
@@ -149,7 +157,7 @@ const ContactSection = () => {
                   <FormField
                     control={form.control}
                     name="phone"
-                    render={({ field }: { field: any }) => (
+                    render={({ field }: { field: ControllerRenderProps<ContactFormData, "phone"> }) => (
                       <FormItem className="group">
                         <FormControl>
                           <Input
@@ -163,11 +171,11 @@ const ContactSection = () => {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="subject"
-                    rules={{ required: 'Subject is required' }}
+                    rules={{ required: "Subject is required" }}
                     render={({ field }) => (
                       <FormItem className="group">
                         <FormControl>
@@ -187,7 +195,7 @@ const ContactSection = () => {
                 <FormField
                   control={form.control}
                   name="message"
-                  rules={{ required: 'Message is required' }}
+                  rules={{ required: "Message is required" }}
                   render={({ field }) => (
                     <FormItem className="group">
                       <FormControl>
@@ -215,7 +223,7 @@ const ContactSection = () => {
                       Sending...
                     </div>
                   ) : (
-                    'Send A Message'
+                    "Send A Message"
                   )}
                 </Button>
               </form>
