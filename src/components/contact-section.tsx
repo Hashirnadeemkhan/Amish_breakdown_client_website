@@ -61,7 +61,7 @@ const ContactSection = () => {
               <Image
                 height={600}
                 width={600}
-                src="/contact"
+                src="/contact.webp"
                 alt="Professional business consultation"
                 className="w-full h-[600px] object-cover"
               />
