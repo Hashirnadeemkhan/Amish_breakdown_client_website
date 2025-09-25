@@ -110,7 +110,7 @@ export function HeroSection() {
               <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 rounded-3xl blur-xl animate-pulse"></div>
 
               <Image
-                src="/service8.jpg"
+                src="/hero.png"
                 height={600}
                 width={800}
                 alt="Professional tow truck providing breakdown recovery service"

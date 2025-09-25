@@ -95,7 +95,7 @@ const ContactSection = () => {
                 <span className="text-lg">Contact With Us</span>
                 <span className="text-2xl">►►►</span>
               </div>
-              <h2 className="text-5xl font-bold text-foreground leading-tight animate-bounce-in delay-500">
+              <h2 className="lg:text-5xl text-4xl font-bold text-foreground leading-tight animate-bounce-in delay-500">
                 Feel Free to Write us
               </h2>
             </div>

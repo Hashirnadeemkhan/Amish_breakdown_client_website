@@ -49,7 +49,8 @@ export function Header() {
             <div className="hidden lg:flex items-center space-x-6 font-medium">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>Head Office: 51 Biscoe Close Heston TW5 0UP Heston</span>
+                <span>11 Spinney Rise
+Birstall, Leicester LE4 3DY</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
@@ -162,7 +163,7 @@ export function Header() {
                       isScrolled ? "text-gray-900" : "text-white"
                     }`}
                   >
-                    0745 4749131
+                    07407647395
                   </div>
                 </div>
               </div>

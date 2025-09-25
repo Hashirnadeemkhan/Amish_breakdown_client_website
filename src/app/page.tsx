@@ -4,7 +4,7 @@ import { ServicesSection } from "@/components/services-section"
 
 import TestimonialCarousel from "@/components/testimonials-section"
 // import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
+import  {Footer}  from "@/components/footer"
 import { AboutSection } from "@/components/about-section"
 import LuxurySection from "@/components/luxury-section"
 import WhyChooseUsSection from "@/components/why-choose-us-section"

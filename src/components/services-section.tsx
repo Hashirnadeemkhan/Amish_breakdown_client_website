@@ -8,48 +8,72 @@ import { ArrowRight } from "lucide-react"
 
 const featuredServices = [
   {
-    title: "Emergency Breakdown Recovery",
+    title: "Car Breakdown Recovery",
     description:
-      "24/7 emergency breakdown recovery service for all vehicle types. Our professional team responds quickly to get you back on the road safely with state-of-the-art recovery equipment.",
+      "Fast, reliable, and 24/7 car breakdown recovery across the UK. Amish Breakdown Recovery ensures your vehicle is safely transported with modern recovery trucks and professional staff.",
     image: "/service3.jpg",
     delay: 0,
   },
   {
-    title: "Mobile Mechanic Service",
+    title: "Jump Start",
     description:
-      "On-site mechanical repairs and diagnostics at your location. Our certified mechanics come to you with fully equipped mobile workshops for convenient roadside assistance.",
-    image: "/service2.jpg",
-    delay: 200,
-  },
-  {
-    title: "Vehicle Transportation & Towing",
-    description:
-      "Safe and secure vehicle transportation for non-running vehicles. We provide professional towing services with modern equipment ensuring your vehicle's protection during transport.",
-    image: "/service1.jpg",
-    delay: 400,
-  },
-  {
-    title: "Emergency Breakdown Recovery",
-    description:
-      "24/7 emergency breakdown recovery service for all vehicle types. Our professional team responds quickly to get you back on the road safely with state-of-the-art recovery equipment.",
-    image: "/service4.jpg",
+      "Flat battery? Our emergency jump start service will quickly revive your vehicle on the spot, getting you back on the road without delays.",
+    image: "/jump.png",
     delay: 0,
   },
   {
     title: "Mobile Mechanic Service",
     description:
-      "On-site mechanical repairs and diagnostics at your location. Our certified mechanics come to you with fully equipped mobile workshops for convenient roadside assistance.",
-    image: "/service5.jpg",
+      "Certified mobile mechanics available at your location for minor repairs, diagnostics, and quick fixes — no need to tow, we come to you.",
+    image: "/mobile.png",
     delay: 200,
   },
   {
-    title: "Vehicle Transportation & Towing",
+    title: "Vehicle Transportation",
     description:
-      "Safe and secure vehicle transportation for non-running vehicles. We provide professional towing services with modern equipment ensuring your vehicle's protection during transport.",
+      "Safe and secure transportation of your car, van, or light commercial vehicle. We handle dealership transfers, auction pickups, and long-distance transport with care.",
+    image: "/vechile.png",
+    delay: 400,
+  },
+  {
+    title: "Fuel Delivery Service",
+    description:
+      "Run out of fuel? Amish Breakdown Recovery provides fast roadside fuel delivery to get you moving again without stress.",
+    image: "/fuel.jpg",
+    delay: 0,
+  },
+  {
+    title: "Towing Services",
+    description:
+      "Professional towing for broken-down, accident-damaged, or non-running vehicles. Available 24/7 with rapid response times.",
+    image: "/hero.png",
+    delay: 200,
+  },
+  {
+    title: "Auction Collection",
+    description:
+      "Reliable vehicle collection directly from auctions. We ensure secure and hassle-free transport of your purchased vehicles to your doorstep.",
+    image: "/service4.jpg",
+    delay: 400,
+  },
+  {
+    title: "Dealership Collection",
+    description:
+      "We provide safe and timely collection of vehicles from dealerships. Whether new or used, we transport cars with the highest care and professionalism.",
     image: "/service6.jpg",
     delay: 400,
   },
+{
+  title: "Tire Change Assistance",
+  description:
+    "Got a flat tire? Amish Breakdown Recovery provides quick and reliable roadside tire replacement or assistance, ensuring you’re back on the road safely in no time.",
+  image: "/tyre.jpg",
+  delay: 400,
+}
+
+               
 ]
+
 
 export function ServicesSection() {
   const [visibleCards, setVisibleCards] = useState<number[]>([])
@@ -130,12 +154,12 @@ export function ServicesSection() {
                   </h3>
                   <p className="text-muted-foreground text-pretty leading-relaxed mb-6">{service.description}</p>
 
-                  <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-none relative overflow-hidden group/btn transition-all duration-300">
+                  <Button className="bg-yellow-500  text-black hover:text-white font-semibold px-6 py-3 rounded-none relative overflow-hidden group/btn transition-all duration-300">
                     <span className="relative z-10 flex items-center gap-2">
                       Book Now
                       <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                     </span>
-                    <div className="absolute inset-0 bg-yellow-600 transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300"></div>
+                    <div className="absolute inset-0 bg-black hover:text-white transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300"></div>
                   </Button>
                 </CardContent>
               </Card>
