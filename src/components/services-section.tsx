@@ -154,13 +154,19 @@ export function ServicesSection() {
                   </h3>
                   <p className="text-muted-foreground text-pretty leading-relaxed mb-6">{service.description}</p>
 
-                  <Button className="bg-yellow-500  text-black hover:text-white font-semibold px-6 py-3 rounded-none relative overflow-hidden group/btn transition-all duration-300">
-                    <span className="relative z-10 flex items-center gap-2">
-                      Book Now
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                    </span>
-                    <div className="absolute inset-0 bg-black hover:text-white transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300"></div>
-                  </Button>
+                 <Button
+  asChild
+  className="bg-yellow-500 text-black hover:text-white font-semibold px-6 py-3 rounded-none relative overflow-hidden group/btn transition-all duration-300"
+>
+  <a href="tel:07407647395">
+    <span className="relative z-10 flex items-center gap-2">
+      Book Now
+      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+    </span>
+    <div className="absolute inset-0 bg-black hover:text-white transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300"></div>
+  </a>
+</Button>
+
                 </CardContent>
               </Card>
             )

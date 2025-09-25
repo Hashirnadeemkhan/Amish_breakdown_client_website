@@ -122,12 +122,13 @@ export function Footer() {
                     <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center">
                       <Phone className="w-6 h-6 text-yellow-400" />
                     </div>
-                    <div>
-                      <div className="text-sm font-semibold text-yellow-400">
-                        Emergency Hotline
-                      </div>
-                      <div className="text-white font-bold">07407647395</div>
-                    </div>
+                  <div>
+  <div className="text-sm font-semibold text-yellow-400">Emergency Hotline</div>
+  <a href="tel:07407647395" className="text-white font-bold hover:underline">
+    07407647395
+  </a>
+</div>
+
                   </div>
                 </div>
 

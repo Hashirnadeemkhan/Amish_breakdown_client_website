@@ -45,7 +45,9 @@ export function HeroSection() {
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-balance leading-tight">
                 <span className="text-white block animate-fade-in-up">Fast & Reliable</span>
-                <span className="block text-yellow-400 animate-fade-in-up animation-delay-200">Breakdown Recovery</span>
+                <span className="block text-yellow-400 animate-fade-in-up animation-delay-200">
+                  Breakdown Recovery
+                </span>
                 <span className="block text-white text-2xl sm:text-3xl lg:text-4xl font-normal mt-2 animate-fade-in-up animation-delay-400">
                   Amish Recovery Services
                 </span>
@@ -58,22 +60,30 @@ export function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 animate-fade-in-up animation-delay-800">
-              <Button
-                size="lg"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-10 py-7 rounded-xl font-semibold shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 hover:scale-105"
-              >
-                <Phone className="w-5 h-5 mr-3" />
-                Emergency Call Now
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-7 rounded-xl bg-transparent border-2 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400 transition-all duration-300"
-              >
-                View All Services
-              </Button>
+              {/* Emergency Call Now -> Direct Call */}
+              <a href="tel:07407647395">
+                <Button
+                  size="lg"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-10 py-7 rounded-xl font-semibold shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 hover:scale-105"
+                >
+                  <Phone className="w-5 h-5 mr-3" />
+                  Emergency Call Now
+                </Button>
+              </a>
+
+              {/* View All Services -> Scroll to services section */}
+              <a href="#services">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-10 py-7 rounded-xl bg-transparent border-2 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400 transition-all duration-300"
+                >
+                  View All Services
+                </Button>
+              </a>
             </div>
 
+            {/* Features */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-12 animate-fade-in-up animation-delay-1000">
               <div className="flex items-center space-x-4 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 hover:scale-105">
                 <Clock className="w-10 h-10 text-yellow-400 animate-pulse" />
@@ -101,6 +111,7 @@ export function HeroSection() {
             </div>
           </div>
 
+          {/* Hero Image */}
           <div
             className={`relative ${isVisible ? "animate-fade-scale" : "opacity-0 scale-95"}`}
             style={{ transform: `translateY(${scrollY * -0.05}px)` }}

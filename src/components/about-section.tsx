@@ -173,12 +173,15 @@ export function AboutSection() {
 
             {/* Contact Button */}
             <div className="pt-4">
-              <Button
-                className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                Contact Us
-              </Button>
+             <Button
+  asChild
+  className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+>
+  <a href="tel:07407647395">
+    Call Now
+  </a>
+</Button>
+
             </div>
           </div>
         </div>

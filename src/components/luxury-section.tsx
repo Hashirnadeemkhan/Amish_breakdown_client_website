@@ -37,21 +37,13 @@ export default function LuxurySection() {
           >
             <div className="flex gap-1">
               {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-2 h-2 bg-yellow-400 transform rotate-45"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                />
+                <div key={i} className="w-2 h-2 bg-yellow-400 transform rotate-45" />
               ))}
             </div>
             <span className="text-gray-600 font-medium">Premium Service</span>
             <div className="flex gap-1">
               {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-2 h-2 bg-yellow-400 transform rotate-45"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                />
+                <div key={i} className="w-2 h-2 bg-yellow-400 transform rotate-45" />
               ))}
             </div>
           </div>
@@ -74,13 +66,11 @@ export default function LuxurySection() {
             }`}
           >
             <div className="p-8 lg:p-10">
-              {/* Badge */}
               <div className="inline-flex items-center gap-3 bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold mb-6 group-hover:bg-yellow-500 transition-colors">
                 <Clock className="w-5 h-5" />
                 Emergency Response
               </div>
 
-              {/* Content */}
               <div className="mb-8">
                 <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Rapid Response Fleet</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -90,9 +80,12 @@ export default function LuxurySection() {
                 </p>
               </div>
 
-              {/* Action Button */}
+              {/* Learn More Button → scroll to services */}
               <div className="flex justify-between items-end">
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <button
+                  onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
                   <span className="flex items-center gap-2">
                     Learn More
                     <svg
@@ -108,7 +101,6 @@ export default function LuxurySection() {
               </div>
             </div>
 
-            {/* Image Section */}
             <div className="relative h-64 lg:h-80 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
               <div className="absolute top-4 right-4 z-20">
@@ -133,13 +125,11 @@ export default function LuxurySection() {
             }`}
           >
             <div className="p-8 lg:p-10">
-              {/* Badge */}
               <div className="inline-flex items-center gap-3 bg-yellow-400 text-black px-4 py-2 rounded-lg font-semibold mb-6 group-hover:bg-yellow-500 transition-colors">
                 <Shield className="w-5 h-5" />
                 Certified Technicians
               </div>
 
-              {/* Content */}
               <div className="mb-8">
                 <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Expert Technicians</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -148,9 +138,12 @@ export default function LuxurySection() {
                 </p>
               </div>
 
-              {/* Action Button */}
+              {/* Contact Us Button → direct call */}
               <div className="flex justify-between items-end">
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <a
+                  href="tel:07407647395"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
                   <span className="flex items-center gap-2">
                     Contact Us
                     <svg
@@ -162,11 +155,10 @@ export default function LuxurySection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
-                </button>
+                </a>
               </div>
             </div>
 
-            {/* Image Section */}
             <div className="relative h-64 lg:h-80 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
               <div className="absolute top-4 right-4 z-20">
