@@ -78,7 +78,7 @@ Birstall, Leicester LE4 3DY</span>
                 isScrolled ? "scale-90" : "scale-100"
               }`}
             >
-             <Image src="/logo1.jpg"  alt="Logo" width={110} height={110} />
+             <Image src="/logo.jpg"  alt="Logo" width={110} height={110} />
              
             </div>
 
