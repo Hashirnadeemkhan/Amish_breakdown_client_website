@@ -55,13 +55,15 @@ export function Footer() {
 
               {/* Emergency Call To Action */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-6 rounded-xl shadow-lg hover:shadow-yellow-400/30 transition-all duration-300 hover:scale-105"
-                >
-                  <Phone className="w-5 h-5 mr-3" />
-                  Emergency: 07407647395
-                </Button>
+                <a href="tel:07407647395">
+                  <Button
+                    size="lg"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-6 rounded-xl shadow-lg hover:shadow-yellow-400/30 transition-all duration-300 hover:scale-105"
+                  >
+                    <Phone className="w-5 h-5 mr-3" />
+                    Emergency: 07407647395
+                  </Button>
+                </a>
                 <div className="bg-white/5 border border-yellow-400/20 rounded-xl p-4 flex items-center space-x-3 backdrop-blur-sm">
                   <div className="flex space-x-1">
                     {[...Array(5)].map((_, i) => (
@@ -79,7 +81,10 @@ export function Footer() {
             </div>
 
             {/* Services */}
-            <div className="space-y-6 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            <div
+              className="space-y-6 animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               <h3 className="text-xl font-bold text-white flex items-center space-x-3">
                 <div className="w-2 h-8 bg-yellow-400 rounded-full"></div>
                 <span>Our Services</span>
@@ -94,7 +99,7 @@ export function Footer() {
                   "Towing services",
                   "Auction collection",
                   "Dealership collection",
-                  "Mobile mechanic service"
+                  "Mobile mechanic service",
                 ].map((service) => (
                   <li key={service} className="group">
                     <a
@@ -110,7 +115,10 @@ export function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-6 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+            <div
+              className="space-y-6 animate-slide-up"
+              style={{ animationDelay: "0.4s" }}
+            >
               <h3 className="text-xl font-bold text-white flex items-center space-x-3">
                 <div className="w-2 h-8 bg-yellow-400 rounded-full"></div>
                 <span>Contact Info</span>
@@ -122,13 +130,17 @@ export function Footer() {
                     <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center">
                       <Phone className="w-6 h-6 text-yellow-400" />
                     </div>
-                  <div>
-  <div className="text-sm font-semibold text-yellow-400">Emergency Hotline</div>
-  <a href="tel:07407647395" className="text-white font-bold hover:underline">
-    07407647395
-  </a>
-</div>
-
+                    <div>
+                      <div className="text-sm font-semibold text-yellow-400">
+                        Emergency Hotline
+                      </div>
+                      <a
+                        href="tel:07407647395"
+                        className="text-white font-bold hover:underline"
+                      >
+                        07407647395
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -175,7 +187,7 @@ export function Footer() {
         <div className="border-t border-yellow-400/20 bg-slate-900/80 backdrop-blur-md">
           <div className="container mx-auto px-6 lg:px-12 xl:px-16 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="flex items-center space-x-6 text-sm text-gray-400">
+              <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm text-gray-400">
                 <span>© 2024 Amish Breakdown Recovery</span>
                 <span className="hidden md:inline">•</span>
                 <a href="#" className="hover:text-yellow-400 transition-colors">
@@ -185,11 +197,13 @@ export function Footer() {
                 <a href="#" className="hover:text-yellow-400 transition-colors">
                   Terms of Service
                 </a>
+                <span className="hidden md:inline">•</span>
+                <span className="text-gray-500 italic">
+                  Crafted by BrightReach Solutions
+                </span>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="text-sm text-gray-400">
-                  Licensed & Insured
-                </div>
+                <div className="text-sm text-gray-400">Licensed & Insured</div>
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                 <div className="text-sm text-yellow-400 font-semibold">
                   Professional Recovery Services
