@@ -43,7 +43,6 @@ export function Header() {
             <div className="flex items-center space-x-3">
               <Facebook className="w-4 h-4 hover:text-white cursor-pointer transition-all duration-300 hover:scale-110" />
               <Instagram className="w-4 h-4 hover:text-white cursor-pointer transition-all duration-300 hover:scale-110" />
-              {/* WhatsApp Icon */}
               <a
                 href="https://wa.me/447407647395"
                 target="_blank"
@@ -96,12 +95,21 @@ export function Header() {
 
             {/* Desktop Menu */}
             <nav className="hidden lg:flex items-center space-x-8">
-              <Link href="#home" className="nav-link">Home</Link>
-              <Link href="#about" className="nav-link">About</Link>
-              <Link href="#services" className="nav-link">Services</Link>
-              <Link href="#testimonial" className="nav-link">Testimonial</Link>
-              <Link href="#choose-us" className="nav-link">Choose Us</Link>
-              <Link href="#contact" className="nav-link">Contact Us</Link>
+              {["home", "about", "services", "testimonial", "choose-us", "contact"].map(
+                (item) => (
+                  <Link
+                    key={item}
+                    href={`#${item}`}
+                    className={`transition-colors duration-300 ${
+                      isScrolled
+                        ? "text-gray-900 hover:text-yellow-600"
+                        : "text-white hover:text-yellow-400"
+                    }`}
+                  >
+                    {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
+                  </Link>
+                )
+              )}
             </nav>
 
             {/* Call Options (Desktop) */}
@@ -113,7 +121,6 @@ export function Header() {
                     : "bg-gray-800/50 border border-gray-700 hover:bg-gray-700/50"
                 }`}
               >
-                {/* Text */}
                 <div>
                   <div
                     className={`text-xs transition-colors duration-300 ${
@@ -131,17 +138,13 @@ export function Header() {
                   </div>
                 </div>
 
-                {/* Icons */}
                 <div className="flex items-center space-x-2">
-                  {/* Direct Call */}
                   <a
                     href="tel:07407647395"
                     className="p-2 bg-yellow-500 rounded-full hover:bg-yellow-600 transition"
                   >
                     <Phone className="w-4 h-4 text-black" />
                   </a>
-
-                  {/* WhatsApp */}
                   <a
                     href="https://wa.me/447407647395"
                     target="_blank"
@@ -173,33 +176,21 @@ export function Header() {
               }`}
             >
               <nav className="flex flex-col space-y-4 pt-4">
-                <Link href="#home" className="mobile-link">Home</Link>
-                <Link href="#about" className="mobile-link">About</Link>
-                <Link href="#services" className="mobile-link">Services</Link>
-                <Link href="#testimonial" className="mobile-link">Testimonial</Link>
-                <Link href="#choose-us" className="mobile-link">Choose Us</Link>
-                <Link href="#contact" className="mobile-link">Contact Us</Link>
-
-                {/* Mobile Call Options */}
-                <div className="flex items-center space-x-3 pt-4">
-                  {/* Direct Call */}
-                  <a
-                    href="tel:07407647395"
-                    className="p-2 bg-yellow-500 rounded-full hover:bg-yellow-600 transition"
-                  >
-                    <Phone className="w-5 h-5 text-black" />
-                  </a>
-
-                  {/* WhatsApp */}
-                  <a
-                    href="https://wa.me/447407647395"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-green-500 rounded-full hover:bg-green-600 transition"
-                  >
-                    <FaWhatsapp className="w-5 h-5 text-white" />
-                  </a>
-                </div>
+                {["home", "about", "services", "testimonial", "choose-us", "contact"].map(
+                  (item) => (
+                    <Link
+                      key={item}
+                      href={`#${item}`}
+                      className={`transition-colors duration-300 ${
+                        isScrolled
+                          ? "text-gray-900 hover:text-yellow-600"
+                          : "text-white hover:text-yellow-400"
+                      }`}
+                    >
+                      {item.charAt(0).toUpperCase() + item.slice(1).replace("-", " ")}
+                    </Link>
+                  )
+                )}
               </nav>
             </div>
           )}
