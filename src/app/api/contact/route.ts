@@ -1,4 +1,6 @@
 // src/app/api/contact/route.ts
+export const runtime = "nodejs";   // 👈 important
+
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -22,17 +24,6 @@ export async function POST(req: Request) {
         pass: process.env.EMAIL_PASS,
       },
     });
-
-    // Optional: verify connection/auth early to get clearer errors in server log
-    try {
-      await transporter.verify();
-    } catch (vErr) {
-      console.error("SMTP verify failed:", vErr);
-      return NextResponse.json(
-        { success: false, error: "SMTP verification failed. Check credentials." },
-        { status: 500 }
-      );
-    }
 
     const mail = {
       from: `"Website Contact" <${process.env.EMAIL_USER}>`,
