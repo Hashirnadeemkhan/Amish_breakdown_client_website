@@ -1,62 +1,50 @@
 "use client";
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 
-// ✅ Zod schema for validation
+// Zod schema
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
+  email: z.string().email("Invalid email"),
+  phone: z.string().min(5, "Phone is required"),
   subject: z.string().min(2, "Subject is required"),
-  message: z.string().min(5, "Message must be at least 5 characters"),
+  message: z.string().min(5, "Message is required"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export default function ContactSection() {
   const [status, setStatus] = useState<"success" | "error" | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    },
   });
 
+  // Submit Handler
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setStatus(null);
 
     try {
-      // Simulate API call
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (Math.random() > 0.3) resolve(true); // 70% success
-          else reject(new Error("Something went wrong"));
-        }, 1500);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-      console.log("Form submitted:", data);
-      setStatus("success");
-      form.reset();
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
     } catch (err) {
       console.error(err);
       setStatus("error");
@@ -66,167 +54,105 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="min-h-screen bg-background relative overflow-hidden">
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-          {/* Left Side - Image */}
-          <div className="relative">
-            <Image
-              height={600}
-              width={600}
-              src="/contact.webp"
-              alt="Professional business consultation"
-              className="w-full h-[600px] object-cover rounded-3xl shadow-lg"
-            />
-          </div>
+    <section className="w-full max-w-6xl mx-auto my-12 p-6 bg-white rounded-xl shadow-lg grid md:grid-cols-2 gap-8">
+      {/* Left Image */}
+      <div className="rounded-lg overflow-hidden">
+        <Image
+        height={400} // apni image ki height
+        width={600} // apni image ki width
+          src="/contact.webp" // apni image ka path
+          alt="Contact"
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-          {/* Right Side - Contact Form */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2 text-primary font-semibold">
-                <span className="text-2xl">◄◄◄</span>
-                <span className="text-lg">Contact With Us</span>
-                <span className="text-2xl">►►►</span>
-              </div>
-              <h2 className="lg:text-5xl text-4xl font-bold text-foreground leading-tight">
-                Feel Free to Write us
-              </h2>
-            </div>
+      {/* Right Form */}
+      <div>
+        <h2 className="text-3xl font-bold mb-6 text-center">Feel Free to Write Us</h2>
 
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
-              >
-                {/* Name and Email Row */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Your Name"
-                            {...field}
-                            className="h-14 text-lg border-2 border-border focus:border-primary transition-all duration-300"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {/* Name */}
+          <input
+            type="text"
+            placeholder="Your Name"
+            {...form.register("name")}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          {form.formState.errors.name && (
+            <p className="text-red-500 text-sm">{form.formState.errors.name.message}</p>
+          )}
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Email Address"
-                            type="email"
-                            {...field}
-                            className="h-14 text-lg border-2 border-border focus:border-primary transition-all duration-300"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+          {/* Email */}
+          <input
+            type="email"
+            placeholder="Email Address"
+            {...form.register("email")}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          {form.formState.errors.email && (
+            <p className="text-red-500 text-sm">{form.formState.errors.email.message}</p>
+          )}
 
-                {/* Phone and Subject Row */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Phone"
-                            type="tel"
-                            {...field}
-                            className="h-14 text-lg border-2 border-border focus:border-primary transition-all duration-300"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+          {/* Phone */}
+          <input
+            type="text"
+            placeholder="Phone"
+            {...form.register("phone")}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          {form.formState.errors.phone && (
+            <p className="text-red-500 text-sm">{form.formState.errors.phone.message}</p>
+          )}
 
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Subject"
-                            {...field}
-                            className="h-14 text-lg border-2 border-border focus:border-primary transition-all duration-300"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+          {/* Subject */}
+          <input
+            type="text"
+            placeholder="Subject"
+            {...form.register("subject")}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          {form.formState.errors.subject && (
+            <p className="text-red-500 text-sm">{form.formState.errors.subject.message}</p>
+          )}
 
-                {/* Message Field */}
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Write a Message"
-                          {...field}
-                          rows={6}
-                          className="text-lg border-2 border-border focus:border-primary transition-all duration-300 resize-none"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          {/* Message - full width */}
+          <textarea
+            placeholder="Write a Message"
+            {...form.register("message")}
+            rows={5}
+            className="w-full md:col-span-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          ></textarea>
+          {form.formState.errors.message && (
+            <p className="text-red-500 text-sm md:col-span-2">
+              {form.formState.errors.message.message}
+            </p>
+          )}
 
-                {/* Status Message */}
-                {status === "success" && (
-                  <p className="text-green-600 font-medium">
-                    ✅ Message sent successfully!
-                  </p>
-                )}
-                {status === "error" && (
-                  <p className="text-red-600 font-medium">
-                    ❌ Failed to send message. Please try again.
-                  </p>
-                )}
+          {/* Success / Error Message */}
+          {status === "success" && (
+            <p className="text-green-600 font-medium md:col-span-2">
+              ✅ Message sent successfully!
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-red-600 font-medium md:col-span-2">
+              ❌ Failed to send message. Please try again.
+            </p>
+          )}
 
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="h-14 px-12 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin"></div>
-                      Sending...
-                    </div>
-                  ) : (
-                    "Send A Message"
-                  )}
-                </Button>
-              </form>
-            </Form>
-          </div>
-        </div>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full md:col-span-2 bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition disabled:opacity-50"
+          >
+            {isSubmitting ? "Sending..." : "Send A Message"}
+          </button>
+        </form>
       </div>
     </section>
   );
-};
-
-export default ContactSection;
+}
