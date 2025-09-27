@@ -2,6 +2,7 @@
 
 import { Phone, MapPin, Clock, Star, Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export function Footer() {
   return (
@@ -199,7 +200,15 @@ export function Footer() {
                 </a>
                 <span className="hidden md:inline">•</span>
                 <span className="text-gray-500 italic">
-                  Crafted by BrightReach Solutions
+                  Design and development by{" "}
+                  <Link
+                    href="https://brightreachsolutions.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-yellow-400 hover:underline font-semibold"
+                  >
+                    Bright Reach Solutions
+                  </Link>
                 </span>
               </div>
               <div className="flex items-center space-x-3">
