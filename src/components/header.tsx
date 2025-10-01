@@ -140,7 +140,7 @@ export function Header() {
 
                 <div className="flex items-center space-x-2">
                   <a
-                    href="tel:07407647395"
+                    href="tel:447407647395"
                     className="p-2 bg-yellow-500 rounded-full hover:bg-yellow-600 transition"
                   >
                     <Phone className="w-4 h-4 text-black" />

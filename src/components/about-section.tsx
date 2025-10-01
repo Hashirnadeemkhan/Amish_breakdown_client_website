@@ -78,7 +78,7 @@ export function AboutSection() {
                 </div>
                 <div>
                   <div className="text-xs text-gray-300">Call to Questions</div>
-                  <div className="font-bold text-lg">0745 4749131</div>
+                  <div className="font-bold text-lg">07407647395</div>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@ export function AboutSection() {
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Premium Breakdown Recovery Services in{" "}
                 <span className="text-yellow-600 relative">
-                  London
+                  Leicester
                   <div className="absolute -bottom-2 left-0 w-full h-1 bg-yellow-400 rounded-full transform scale-x-0 animate-pulse"></div>
                 </span>
               </h2>
@@ -117,7 +117,7 @@ export function AboutSection() {
             <p className="text-lg text-gray-600 leading-relaxed">
               Experience top-tier breakdown recovery services, perfect for emergencies, roadside assistance, vehicle
               transportation, and recovery operations. Book now for reliable, professional, and stress-free automotive
-              support services across London and surrounding areas.
+              support services across Leicester and surrounding areas.
             </p>
 
             {/* Quote */}
@@ -177,7 +177,7 @@ export function AboutSection() {
   asChild
   className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
 >
-  <a href="tel:07407647395">
+  <a href="tel:447407647395">
     Call Now
   </a>
 </Button>

@@ -61,7 +61,7 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-6 animate-fade-in-up animation-delay-800">
               {/* Emergency Call Now -> Direct Call */}
-              <a href="tel:07407647395">
+              <a href="tel:447407647395">
                 <Button
                   size="lg"
                   className="bg-yellow-400 hover:bg-yellow-500 text-black text-lg px-10 py-7 rounded-xl font-semibold shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 hover:scale-105"
