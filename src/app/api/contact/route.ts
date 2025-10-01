@@ -1,53 +1,49 @@
-// src/app/api/contact/route.ts
-export const runtime = "nodejs";   // 👈 important
+import { type NextRequest, NextResponse } from "next/server"
+import { Resend } from "resend"
 
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+const resend = new Resend(process.env.RESEND_API_KEY)
 
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const body = await req.json();
-    const { name, email, phone, subject, message } = body ?? {};
+    const body = await request.json()
+    const { name, email, phone, postcode, service, date, message } = body
 
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.EMAIL_TO) {
-      console.error("Missing EMAIL_USER/EMAIL_PASS/EMAIL_TO env vars");
-      return NextResponse.json(
-        { success: false, error: "Email not configured on server" },
-        { status: 500 }
-      );
+
+    // ✅ Production: send email via Resend
+    const { data, error } = await resend.emails.send({
+      from: "Amish Breakdown Recovery <noreply@amishbreakdownrecovery.com>", // apna verified domain/email daalo
+      to: [process.env.BUSINESS_EMAIL as string],
+      subject: `New Contact Form Submission from ${name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #16a34a; border-bottom: 2px solid #16a34a; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+          <p><strong>Postcode:</strong> ${postcode || "Not provided"}</p>
+          <p><strong>Service:</strong> ${service || "Not specified"}</p>
+          <p><strong>Preferred Date:</strong> ${date || "Not specified"}</p>
+          <p><strong>Message:</strong> ${message || "No message"}</p>
+
+          <hr />
+          <p style="font-size: 12px; color: #6b7280;">
+            This email was sent from your website contact form.
+          </p>
+        </div>
+      `,
+    })
+
+    if (error) {
+      console.error("❌ Resend error:", error)
+      return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const mail = {
-      from: `"Website Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO,
-      replyTo: email || undefined,
-      subject: `Contact Form: ${subject || "No subject"}`,
-      html: `
-        <h3>Contact form submission</h3>
-        <p><strong>Name:</strong> ${name ?? "-"}</p>
-        <p><strong>Email:</strong> ${email ?? "-"}</p>
-        <p><strong>Phone:</strong> ${phone ?? "-"}</p>
-        <p><strong>Message:</strong><br/>${(message ?? "-").replace(/\n/g, "<br/>")}</p>
-      `,
-    };
-
-    const info = await transporter.sendMail(mail);
-    console.log("Email sent:", info?.messageId ?? info);
-
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error("Send mail error:", err);
-    return NextResponse.json(
-      { success: false, error: err instanceof Error ? err.message : String(err) },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: true, data })
+  } catch (error) {
+    console.error("❌ API error:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
