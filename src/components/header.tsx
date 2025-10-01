@@ -134,19 +134,19 @@ export function Header() {
                       isScrolled ? "text-gray-900" : "text-white"
                     }`}
                   >
-                    07407647395
+                    7886 051544
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-2">
                   <a
-                    href="tel:447407647395"
+                    href="tel:447886051544"
                     className="p-2 bg-yellow-500 rounded-full hover:bg-yellow-600 transition"
                   >
                     <Phone className="w-4 h-4 text-black" />
                   </a>
                   <a
-                    href="https://wa.me/447407647395"
+                    href="https://wa.me/447886051544"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 bg-green-500 rounded-full hover:bg-green-600 transition"

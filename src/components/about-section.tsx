@@ -78,7 +78,7 @@ export function AboutSection() {
                 </div>
                 <div>
                   <div className="text-xs text-gray-300">Call to Questions</div>
-                  <div className="font-bold text-lg">07407647395</div>
+                  <div className="font-bold text-lg">7886051544</div>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@ export function AboutSection() {
   asChild
   className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
 >
-  <a href="tel:447407647395">
+  <a href="tel:447886051544">
     Call Now
   </a>
 </Button>

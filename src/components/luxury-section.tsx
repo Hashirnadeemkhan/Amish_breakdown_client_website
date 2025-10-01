@@ -141,7 +141,7 @@ export default function LuxurySection() {
               {/* Contact Us Button → direct call */}
               <div className="flex justify-between items-end">
                 <a
-                  href="tel:447407647395"
+                  href="tel:447886051544"
                   className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <span className="flex items-center gap-2">

@@ -56,13 +56,13 @@ export function Footer() {
 
               {/* Emergency Call To Action */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="tel:447407647395">
+                <a href="tel:447886051544">
                   <Button
                     size="lg"
                     className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold px-8 py-6 rounded-xl shadow-lg hover:shadow-yellow-400/30 transition-all duration-300 hover:scale-105"
                   >
                     <Phone className="w-5 h-5 mr-3" />
-                    Emergency: 07407647395
+                    Emergency: 7886051544
                   </Button>
                 </a>
                 <div className="bg-white/5 border border-yellow-400/20 rounded-xl p-4 flex items-center space-x-3 backdrop-blur-sm">
@@ -136,10 +136,10 @@ export function Footer() {
                         Emergency Hotline
                       </div>
                       <a
-                        href="tel:447407647395"
+                        href="tel:447886051544"
                         className="text-white font-bold hover:underline"
                       >
-                        07407647395
+                        7886051544
                       </a>
                     </div>
                   </div>
